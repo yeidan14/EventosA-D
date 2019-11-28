@@ -273,7 +273,7 @@
                 <li class="dropdown nav-item"><a id="dropdownBasic3"
                                                  href="#" data-toggle="dropdown"
                                                  class="nav-link position-relative 
-                                                 dropdown-toggle">User<i class="ft-user 
+                                                 dropdown-toggle"><%=(String)session.getAttribute("usuario")%> <i class="ft-user 
                          font-medium-3 blue-grey darken-4"></i>
                     <p class="d-none">User Settings</p></a>
                   <div ngbdropdownmenu="" aria-labelledby="dropdownBasic3" 
@@ -281,9 +281,8 @@
                       
                       <div class="dropdown-divider">
                           
-                      </div><a href="../../../html/html/ltr/login-page.html" 
-                        class="dropdown-item">
-                          <i class="ft-power mr-2"></i><span>Logout</span></a>
+                      </div><a href="Logout.do"        class="dropdown-item">
+                          <i  class="ft-power mr-2"></i><span>Logout</span></a>
                   </div>
                 </li>
                 

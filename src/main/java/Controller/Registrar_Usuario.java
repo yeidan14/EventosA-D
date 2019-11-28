@@ -41,7 +41,7 @@ public class Registrar_Usuario extends HttpServlet {
        String pass=request.getParameter("pass");
        String edad= request.getParameter("edad");
        Integer ed=Integer.parseInt(edad);
-            String de = "yeisondanielmc@ufps.edu.co";
+            String de = "eventos.a.d.cucuta@gmail.com";
             String clave = "yeidan141995";
          
             String mensaje = "¡Felicitaciones Su registro ha Sido Exitoso!"
@@ -64,11 +64,11 @@ public class Registrar_Usuario extends HttpServlet {
         reg.create(per);
          boolean resultado = email.enviarCorreo(de, clave, correo, mensaje, asunto);
          String registrado = "registrado";
-                request.setAttribute("registrado", registrado);
+                request.setAttribute("nombre", registrado);
                 request.getRequestDispatcher("index.jsp").forward(request, response);
          }else{
                String registrado = "yaexiste";
-                request.setAttribute("registrado", registrado);
+                request.setAttribute("nombre", registrado);
                 request.getRequestDispatcher("registro.jsp").forward(request, response);
          }
   

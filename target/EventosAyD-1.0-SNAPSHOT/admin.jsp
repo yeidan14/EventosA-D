@@ -3,7 +3,9 @@
     Created on : 27/11/2019, 04:47:24 PM
     Author     : Daniel
 --%>
-
+<%if (session.getAttribute("admin") != null) {
+        response.sendRedirect("index_admin.jsp");
+    }%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en" class="loading">
@@ -65,20 +67,49 @@
                   <h4 class="card-title mb-3">
                    ADMINISTRADOR
                   </h4>
-                  <input type="text" class="form-control mb-3" placeholder="Email" />
-                  <input type="password" class="form-control mb-3" placeholder="password" />
+                    <%String registrado=(String)request.getAttribute("nombre");
+             if(registrado=="registrado"){%>
+           <div class="alert alert-icon-left alert-success alert-dismissible mb-2" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <strong>Perfecto!</strong>Se ha registrado Correctamente. Ahora Ingresa
+                  
+                </div>
+             <%}        
+             if(registrado=="NoExiste"){%>
+            <div class="alert alert-icon-left alert-danger alert-dismissible mb-2" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                <strong>Error!</strong> El administrador no existe 
+                
+                </div>
+             <%}  if(registrado=="Contraerror"){%>
+            <div class="alert alert-icon-left alert-danger alert-dismissible mb-2" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <strong>Error!</strong> La Contraseña No es Correcta
+                
+                </div>
+             <%}%>
+             <form name="login_admin" action="Login_Admin.do" method="Request" >
+                        <input type="text" name="email" class="form-control mb-3" placeholder="Email" />
+                        <input type="password" name="pass" class="form-control mb-3" placeholder="password" />
                   <div class="fg-actions d-flex justify-content-between">
                     <div class="login-btn">
                     
                     </div>
                     <div class="recover-pass">
-                      <button class="btn btn-primary">
-                        <a href="dashboard1.html" class="text-decoration-none text-white">
+                        <button type="submit" class="btn btn-primary">
+                        <a class="text-decoration-none text-white">
                           INGRESAR
                         </a>
                       </button>
                     </div>
                   </div>
+                    </form>
                 </div>
               </div>
             </div>

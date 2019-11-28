@@ -3,7 +3,9 @@
     Created on : 27/11/2019, 10:08:56 AM
     Author     : Daniel
 --%>
-
+<%if (session.getAttribute("usuario") != null) {
+        response.sendRedirect("index_eventos.jsp");
+    }%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en" class="loading">
@@ -66,7 +68,7 @@
                   <p class="card-text mb-3">
                    Bienvenido a Eventos A & D
                   </p>
-                   <%String registrado=(String)request.getAttribute("registrado");
+                   <%String registrado=(String)request.getAttribute("nombre");
              if(registrado=="registrado"){%>
            <div class="alert alert-icon-left alert-success alert-dismissible mb-2" role="alert">
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -76,18 +78,26 @@
                   
                 </div>
              <%}        
-             if(registrado=="CorreoErroneo"){%>
+             if(registrado=="NoExiste"){%>
             <div class="alert alert-icon-left alert-danger alert-dismissible mb-2" role="alert">
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
-                  <strong>Error!</strong> El Correo No Existe 
+                <strong>Error!</strong> El Correo No Existe <br><a href="registro.jsp" class="alert-link">Crea tu Cuenta</a>
+                
+                </div>
+             <%}  if(registrado=="Contraerror"){%>
+            <div class="alert alert-icon-left alert-danger alert-dismissible mb-2" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <strong>Error!</strong> La Contraseña No es Correcta
                 
                 </div>
              <%}         %>
-                  <form>
-                  <input type="text" class="form-control mb-3" placeholder="Usuario" required=""/>
-                  <input type="password" class="form-control mb-1" placeholder="Contraseña" required=""/>
+             <form name="login" action="Login.do" method="Request">
+                 <input  name="email" type="email" class="form-control mb-3" placeholder="Email" required=""/>
+                 <input  name="pass" type="password" class="form-control mb-1" placeholder="Contraseña" required=""/>
                   <br>
                   <div class="fg-actions d-flex justify-content-between">
                     <div class="login-btn">

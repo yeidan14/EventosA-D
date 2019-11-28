@@ -8,6 +8,18 @@
         <servlet-name>Login</servlet-name>
         <servlet-class>Controller.Login</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>Controller.Logout</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Login_Admin</servlet-name>
+        <servlet-class>Controller.Login_Admin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Logout_Admin</servlet-name>
+        <servlet-class>Controller.Logout_Admin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Registrar_Usuario</servlet-name>
         <url-pattern>/Registrar_Usuario.do</url-pattern>
@@ -15,6 +27,18 @@
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/Logout.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Login_Admin</servlet-name>
+        <url-pattern>/Login_Admin.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Logout_Admin</servlet-name>
+        <url-pattern>/Logout_Admin.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

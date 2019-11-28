@@ -66,12 +66,41 @@ public class Utilidad_Per {
             String sql = "SELECT * FROM persona"; 
             PreparedStatement pstm = cn.prepareStatement(sql);
             ResultSet rs = pstm.executeQuery();
-            
+            System.err.println("-------------por aqui paso antes de while");
             while(rs.next()){
              if(rs.getString("Correo").equals(email)){
                 
               existe=true;
+                 return existe;
                
+              
+               
+           
+             }else{
+                 existe=false;
+                 return existe;
+             }
+            }
+            
+        } catch (Exception e) {
+        }
+        return existe;
+    }
+      
+      
+       public boolean Es_Admin(String email) {
+       Connection cn=Conexion.getConexion2();
+      boolean existe=false;
+        try {
+            String sql = "SELECT * FROM persona"; 
+            PreparedStatement pstm = cn.prepareStatement(sql);
+            ResultSet rs = pstm.executeQuery();
+            
+            while(rs.next()){
+             if((rs.getString("Correo").equals(email)) && (rs.getString("Cargo").equals("administrador"))){
+                
+              existe=true;
+                return existe;
               
                
            
@@ -79,6 +108,7 @@ public class Utilidad_Per {
              
              else{
                  existe=false;
+                  return existe;
              }
             }
             

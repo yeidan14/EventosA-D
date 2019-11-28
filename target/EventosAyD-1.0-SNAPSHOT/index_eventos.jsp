@@ -3,7 +3,9 @@
     Created on : 27/11/2019, 10:54:52 AM
     Author     : Daniel
 --%>
-
+<%if (session.getAttribute("usuario") == null) {
+        response.sendRedirect("index.jsp");
+    }%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en" class="loading">
