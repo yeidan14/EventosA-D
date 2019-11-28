@@ -72,9 +72,9 @@
                   <br>
                   <div class="fg-actions d-flex justify-content-between">
                     <div class="login-btn">
-                        <button type="submit" class="btn btn-outline-primary">
-                            <a href="registro.jsp" class="text-decoration-none">Registrar</a>
-                      </button>
+                        
+                            <a href="registro.jsp" class="btn btn-outline-primary text-decoration-none">Crear Cuenta</a>
+                   
                     </div>
                     <div class="recover-pass">
                         <button type="submit" class="btn btn-primary">
