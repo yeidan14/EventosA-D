@@ -15,14 +15,7 @@
     </properties>
     
     <dependencies>
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>
-            <version>7.0</version>
-            <scope>provided</scope>
-        </dependency>
-        
-        <dependency>
+       <dependency>
             <groupId>javax.servlet.jsp.jstl</groupId>
             <artifactId>jstl-api</artifactId>
             <version>1.2</version>
@@ -34,7 +27,7 @@
             <artifactId>jstl-impl</artifactId>
             <version>1.2</version>
         </dependency>
-
+         
         <dependency>
             <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
@@ -86,11 +79,6 @@
             <version>2.6.1-RC1</version>
         </dependency>
         <dependency>
-            <groupId>unknown.binary</groupId>
-            <artifactId>javax.persistence</artifactId>
-            <version>SNAPSHOT</version>
-        </dependency>
-        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>7.0</version>
@@ -101,6 +89,14 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.23</version>
         </dependency>
+   
+        
+       <dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.7</version>
+		</dependency>
+      
     </dependencies>
 
     <build>

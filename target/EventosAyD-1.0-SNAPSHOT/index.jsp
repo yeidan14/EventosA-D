@@ -66,6 +66,25 @@
                   <p class="card-text mb-3">
                    Bienvenido a Eventos A & D
                   </p>
+                   <%String registrado=(String)request.getAttribute("registrado");
+             if(registrado=="registrado"){%>
+           <div class="alert alert-icon-left alert-success alert-dismissible mb-2" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <strong>Perfecto!</strong>Se ha registrado Correctamente. Ahora Ingresa
+                  
+                </div>
+             <%}        
+             if(registrado=="CorreoErroneo"){%>
+            <div class="alert alert-icon-left alert-danger alert-dismissible mb-2" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <strong>Error!</strong> El Correo No Existe 
+                
+                </div>
+             <%}         %>
                   <form>
                   <input type="text" class="form-control mb-3" placeholder="Usuario" required=""/>
                   <input type="password" class="form-control mb-1" placeholder="Contraseña" required=""/>
