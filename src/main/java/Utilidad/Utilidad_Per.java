@@ -29,7 +29,7 @@ public class Utilidad_Per {
             ResultSet rs = pstm.executeQuery();
             
             while(rs.next()){
-             if(rs.getString("Correo").equals(email)){
+             if(rs.getString("Correo").equals(email)&&rs.getString("Cargo").equals("usuario")){
                 
                 int id=rs.getInt(1);
                 String nom=rs.getString(2);
@@ -70,9 +70,8 @@ public class Utilidad_Per {
             while(rs.next()){
              if(rs.getString("Correo").equals(email)){
                 
-              existe=true;
-                 return existe;
-               
+              existe=true;              
+                 return existe;               
               
                
            
@@ -87,33 +86,41 @@ public class Utilidad_Per {
         return existe;
     }
       
-      
-       public boolean Es_Admin(String email) {
+      public Persona Es_Admin(String email) {
        Connection cn=Conexion.getConexion2();
-      boolean existe=false;
+       Persona u=new Persona();
         try {
             String sql = "SELECT * FROM persona"; 
             PreparedStatement pstm = cn.prepareStatement(sql);
             ResultSet rs = pstm.executeQuery();
             
             while(rs.next()){
-             if((rs.getString("Correo").equals(email)) && (rs.getString("Cargo").equals("administrador"))){
+             if(rs.getString("Correo").equals(email)&&rs.getString("Cargo").equals("administrador")){
                 
-              existe=true;
-                return existe;
+                int id=rs.getInt(1);
+                String nom=rs.getString(2);
+                String ape=rs.getString(3);
+                int edad=rs.getInt(4);
+                String correo=rs.getString(5);
+                String pass=rs.getString(6);
+                String cargo=rs.getString(7);
+             
+               u.setId(id);
+               u.setNombre(nom);
+               u.setApellido(ape);
+               u.setEdad(edad);
+               u.setCorreo(correo);
+               u.setPass(pass);
+               u.setCargo(cargo);
+               
               
                
            
-             }
-             
-             else{
-                 existe=false;
-                  return existe;
              }
             }
             
         } catch (Exception e) {
         }
-        return existe;
+        return u;
     }
 }

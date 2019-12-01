@@ -43,7 +43,7 @@ public class Login extends HttpServlet {
         Persona p =bus.Buscaruser(email) ;
         try {
 
-            if (bus.Existe(email)== true) {
+            if ( p!=null) {
                 if (pass.equals(p.getPass())) {
                     HttpSession misession = request.getSession(true);
                     misession.setAttribute("usuario", p.getNombre());

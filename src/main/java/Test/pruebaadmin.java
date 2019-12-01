@@ -15,9 +15,8 @@ public class pruebaadmin {
     
     public static void main(String[] args) {
         Utilidad.Utilidad_Per bus=new Utilidad_Per();
-         boolean b=bus.Es_Admin("yeidan-14@hotmail.com");
-            boolean c=bus.Existe("yeid23an-14@hotmail.com");
-          System.err.println(""+ b+".-----."+c);
+        
+           
     }
     
 }

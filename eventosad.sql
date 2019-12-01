@@ -74,9 +74,9 @@ CREATE TABLE IF NOT EXISTS `eventos`.`solicitud` (
   `logistico_IdLog` INT(11) NOT NULL,
   `sitio_IdSitio` INT(11) NOT NULL,
   PRIMARY KEY (`IdPeticion`),
-  INDEX `fk_solicitud_persona1_idx` (`persona_Id` ASC) VISIBLE,
-  INDEX `fk_solicitud_logistico1_idx` (`logistico_IdLog` ASC) VISIBLE,
-  INDEX `fk_solicitud_sitio1_idx` (`sitio_IdSitio` ASC) VISIBLE,
+  INDEX `fk_solicitud_persona1_idx` (`persona_Id` ASC) ,
+  INDEX `fk_solicitud_logistico1_idx` (`logistico_IdLog` ASC) ,
+  INDEX `fk_solicitud_sitio1_idx` (`sitio_IdSitio` ASC) ,
   CONSTRAINT `fk_solicitud_logistico1`
     FOREIGN KEY (`logistico_IdLog`)
     REFERENCES `eventos`.`logistico` (`IdLog`)

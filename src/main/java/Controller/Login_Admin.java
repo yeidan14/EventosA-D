@@ -37,13 +37,13 @@ public class Login_Admin extends HttpServlet {
    String email = request.getParameter("email");
         String pass = request.getParameter("pass");
         Utilidad.Utilidad_Per bus= new  Utilidad.Utilidad_Per();
-        Persona p =bus.Buscaruser(email) ;
-        boolean b=bus.Es_Admin(email);
-        
-        System.err.println(""+bus.Es_Admin(email)+""+p.getNombre()+"------"+b);
+        Persona p =bus.Es_Admin(email);
+     
+        System.err.println(""+p.getNombre());
+      
         try {
 
-            if (bus.Es_Admin(email)== true) {
+            if (p != null) {
                 if (pass.equals(p.getPass())) {
                     HttpSession misession = request.getSession(true);
                     misession.setAttribute("admin", p.getNombre());
@@ -54,7 +54,7 @@ public class Login_Admin extends HttpServlet {
                     request.setAttribute("nombre", tipo);                    
                     request.getRequestDispatcher("admin.jsp").forward(request, response);
                 }
-            } else {
+            } else if(p==null) {
                 
                 String tipo = "NoExiste";
                     request.setAttribute("nombre", tipo);

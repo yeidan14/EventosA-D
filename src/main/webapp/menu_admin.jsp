@@ -20,67 +20,26 @@
         <div class="sidebar-content">
           <div class="nav-container">
             <ul id="main-menu-navigation" data-menu="menu-navigation" data-scroll-to-active="true" class="navigation navigation-main">
-              <li class="has-sub nav-item"><a href="#"><i class="ft-home"></i><span data-i18n="" class="menu-title">Dashboard</span><span class="tag badge badge-pill badge-danger float-right mr-1 mt-1">2</span></a>
+              <li class="has-sub nav-item"><a href="#"><i class="ft-home"></i><span data-i18n="" class="menu-title">Sitios</span><span class="tag badge badge-pill badge-danger float-right mr-1 mt-1">2</span></a>
                 <ul class="menu-content">
-                  <li class="active"><a href="dashboard1.html" class="menu-item">Dashboard1</a>
+                  <li class="active"><a href="agregar_sitio.jsp" class="menu-item">Agregar Sitios</a>
                   </li>
-                  <li><a href="dashboard2.html" class="menu-item">Dashboard2</a>
+                  <li><a href="#" class="menu-item">Modificar Sitios</a>
                   </li>
                 </ul>
-              </li>
-              <li class=" nav-item"><a href="color-palette.html"><i class="ft-droplet"></i><span data-i18n="" class="menu-title">Color Palette</span></a>
-              </li>
-              <li class=" nav-item"><a href="inbox.html"><i class="ft-mail"></i><span data-i18n="" class="menu-title">Inbox</span></a>
-              </li>
-              <li class=" nav-item"><a href="chat.html"><i class="ft-message-square"></i><span data-i18n="" class="menu-title">Chat</span></a>
-              </li>
-              <li class=" nav-item"><a href="taskboard.html"><i class="ft-file-text"></i><span data-i18n="" class="menu-title">Task Board</span></a>
-              </li>
-              <li class=" nav-item"><a href="calendar.html"><i class="ft-calendar"></i><span data-i18n="" class="menu-title">Calendar</span></a>
-              </li>
-              <li class="has-sub nav-item"><a href="#"><i class="ft-aperture"></i><span data-i18n="" class="menu-title">UI Kit</span></a>
+              </li>        
+              
+              
+              
+              
+              <li class="has-sub nav-item"><a href="#"><i class="ft-grid"></i><span data-i18n="" class="menu-title">Solicitudes</span></a>
                 <ul class="menu-content">
-                  <li><a href="grids.html" class="menu-item">Grid</a>
+                  <li><a href="#" class="menu-item">Solicitudes</a>
                   </li>
-                  <li><a href="typography.html" class="menu-item">Typography</a>
-                  </li>
-                  <li><a href="syntax-highlighter.html" class="menu-item">Syntax Highlighter</a>
-                  </li>
-                  <li><a href="helper-classes.html" class="menu-item">Helper Classes</a>
-                  </li>
-                  <li><a href="text-utilities.html" class="menu-item">Text Utilities</a>
-                  </li>
-                  <li class="has-sub"><a href="#" class="menu-item">Icons</a>
-                    <ul class="menu-content">
-                      <li><a href="feather.html" class="menu-item">Feather Icon</a>
-                      </li>
-                      <li><a href="font-awesome.html" class="menu-item">Font Awesome Icon</a>
-                      </li>
-                      <li><a href="simple-line.html" class="menu-item">Simple Line Icon</a>
-                      </li>
-                    </ul>
+                  <li><a href="#" class="menu-item">Borrar Solicitudes</a>
                   </li>
                 </ul>
-              </li>
-              
-              
-              <li class="has-sub nav-item"><a href="#"><i class="ft-grid"></i><span data-i18n="" class="menu-title">Tables</span></a>
-                <ul class="menu-content">
-                  <li><a href="regular-table.html" class="menu-item">Regular</a>
-                  </li>
-                  <li><a href="extended-table.html" class="menu-item">Extended</a>
-                  </li>
-                </ul>
-              </li>
-              
-              
-              
-              
-              
-              <li class=" nav-item"><a href="https://pixinvent.com/apex-angular-4-bootstrap-admin-template/documentation"><i class="ft-book"></i><span data-i18n="" class="menu-title">Documentation</span></a>
-              </li>
-              <li class=" nav-item"><a href="https://pixinvent.ticksy.com/"><i class="ft-life-buoy"></i><span data-i18n="" class="menu-title">Support</span></a>
-              </li>
+              </li>              
             </ul>
           </div>
         </div>

@@ -1,6 +1,7 @@
 Controller\Login_Admin.class
 Dto\Solicitud.class
 Dto\Persona.class
+Test\pruebaadmin.class
 Dto\Persona_.class
 Utilidad\Email.class
 Controller\Logout_Admin.class

@@ -62,7 +62,7 @@
 <div class="row">
   
   
-
+    <img src="app-assets/img/fondo-admin.png"  width="100%">
   
   
 </div>
