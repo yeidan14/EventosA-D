@@ -56,15 +56,15 @@ public class SolicitudJpaController implements Serializable {
             }
             em.persist(solicitud);
             if (logisticoIdLog != null) {
-                logisticoIdLog.getSolicitudList().add(solicitud);
+                logisticoIdLog.getSolicitudCollection().add(solicitud);
                 logisticoIdLog = em.merge(logisticoIdLog);
             }
             if (personaId != null) {
-                personaId.getSolicitudList().add(solicitud);
+                personaId.getSolicitudCollection().add(solicitud);
                 personaId = em.merge(personaId);
             }
             if (sitioIdSitio != null) {
-                sitioIdSitio.getSolicitudList().add(solicitud);
+                sitioIdSitio.getSolicitudCollection().add(solicitud);
                 sitioIdSitio = em.merge(sitioIdSitio);
             }
             em.getTransaction().commit();
@@ -101,27 +101,27 @@ public class SolicitudJpaController implements Serializable {
             }
             solicitud = em.merge(solicitud);
             if (logisticoIdLogOld != null && !logisticoIdLogOld.equals(logisticoIdLogNew)) {
-                logisticoIdLogOld.getSolicitudList().remove(solicitud);
+                logisticoIdLogOld.getSolicitudCollection().remove(solicitud);
                 logisticoIdLogOld = em.merge(logisticoIdLogOld);
             }
             if (logisticoIdLogNew != null && !logisticoIdLogNew.equals(logisticoIdLogOld)) {
-                logisticoIdLogNew.getSolicitudList().add(solicitud);
+                logisticoIdLogNew.getSolicitudCollection().add(solicitud);
                 logisticoIdLogNew = em.merge(logisticoIdLogNew);
             }
             if (personaIdOld != null && !personaIdOld.equals(personaIdNew)) {
-                personaIdOld.getSolicitudList().remove(solicitud);
+                personaIdOld.getSolicitudCollection().remove(solicitud);
                 personaIdOld = em.merge(personaIdOld);
             }
             if (personaIdNew != null && !personaIdNew.equals(personaIdOld)) {
-                personaIdNew.getSolicitudList().add(solicitud);
+                personaIdNew.getSolicitudCollection().add(solicitud);
                 personaIdNew = em.merge(personaIdNew);
             }
             if (sitioIdSitioOld != null && !sitioIdSitioOld.equals(sitioIdSitioNew)) {
-                sitioIdSitioOld.getSolicitudList().remove(solicitud);
+                sitioIdSitioOld.getSolicitudCollection().remove(solicitud);
                 sitioIdSitioOld = em.merge(sitioIdSitioOld);
             }
             if (sitioIdSitioNew != null && !sitioIdSitioNew.equals(sitioIdSitioOld)) {
-                sitioIdSitioNew.getSolicitudList().add(solicitud);
+                sitioIdSitioNew.getSolicitudCollection().add(solicitud);
                 sitioIdSitioNew = em.merge(sitioIdSitioNew);
             }
             em.getTransaction().commit();
@@ -155,17 +155,17 @@ public class SolicitudJpaController implements Serializable {
             }
             Logistico logisticoIdLog = solicitud.getLogisticoIdLog();
             if (logisticoIdLog != null) {
-                logisticoIdLog.getSolicitudList().remove(solicitud);
+                logisticoIdLog.getSolicitudCollection().remove(solicitud);
                 logisticoIdLog = em.merge(logisticoIdLog);
             }
             Persona personaId = solicitud.getPersonaId();
             if (personaId != null) {
-                personaId.getSolicitudList().remove(solicitud);
+                personaId.getSolicitudCollection().remove(solicitud);
                 personaId = em.merge(personaId);
             }
             Sitio sitioIdSitio = solicitud.getSitioIdSitio();
             if (sitioIdSitio != null) {
-                sitioIdSitio.getSolicitudList().remove(solicitud);
+                sitioIdSitio.getSolicitudCollection().remove(solicitud);
                 sitioIdSitio = em.merge(sitioIdSitio);
             }
             em.remove(solicitud);

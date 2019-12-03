@@ -41,7 +41,8 @@ public class Registrar_Usuario extends HttpServlet {
        String pass=request.getParameter("pass");
        String edad= request.getParameter("edad");
        Integer ed=Integer.parseInt(edad);
-            String de = "eventos.a.d.cucuta@gmail.com";
+           
+       String de = "eventos.a.d.cucuta@gmail.com";
             String clave = "yeidan141995";
          
             String mensaje = "¡Felicitaciones Su registro ha Sido Exitoso!"

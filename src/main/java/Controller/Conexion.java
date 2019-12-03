@@ -43,10 +43,10 @@ public class Conexion {
         try {
         //?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC
       //"jdbc:mysql://savucv.cly49ofno0yf.us-east-1.rds.amazonaws.com:3306/eventos"
-        String url =  "jdbc:mysql://localhost:3306/eventos";
+        String url =  "jjdbc:mysql://savucv.cly49ofno0yf.us-east-1.rds.amazonaws.com:3306/eventos";
             String Driver = "com.mysql.jdbc.Driver";
-            String user = "root";
-            String clave = "";
+            String user = "yeidan14";
+            String clave = "yeidan141995";
             Class.forName(Driver);
             cn = DriverManager.getConnection(url, user, clave);
             

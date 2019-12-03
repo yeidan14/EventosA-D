@@ -15,6 +15,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import Dto.Solicitud;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -35,27 +36,27 @@ public class PersonaJpaController implements Serializable {
     }
 
     public void create(Persona persona) {
-        if (persona.getSolicitudList() == null) {
-            persona.setSolicitudList(new ArrayList<Solicitud>());
+        if (persona.getSolicitudCollection() == null) {
+            persona.setSolicitudCollection(new ArrayList<Solicitud>());
         }
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            List<Solicitud> attachedSolicitudList = new ArrayList<Solicitud>();
-            for (Solicitud solicitudListSolicitudToAttach : persona.getSolicitudList()) {
-                solicitudListSolicitudToAttach = em.getReference(solicitudListSolicitudToAttach.getClass(), solicitudListSolicitudToAttach.getIdPeticion());
-                attachedSolicitudList.add(solicitudListSolicitudToAttach);
+            Collection<Solicitud> attachedSolicitudCollection = new ArrayList<Solicitud>();
+            for (Solicitud solicitudCollectionSolicitudToAttach : persona.getSolicitudCollection()) {
+                solicitudCollectionSolicitudToAttach = em.getReference(solicitudCollectionSolicitudToAttach.getClass(), solicitudCollectionSolicitudToAttach.getIdPeticion());
+                attachedSolicitudCollection.add(solicitudCollectionSolicitudToAttach);
             }
-            persona.setSolicitudList(attachedSolicitudList);
+            persona.setSolicitudCollection(attachedSolicitudCollection);
             em.persist(persona);
-            for (Solicitud solicitudListSolicitud : persona.getSolicitudList()) {
-                Persona oldPersonaIdOfSolicitudListSolicitud = solicitudListSolicitud.getPersonaId();
-                solicitudListSolicitud.setPersonaId(persona);
-                solicitudListSolicitud = em.merge(solicitudListSolicitud);
-                if (oldPersonaIdOfSolicitudListSolicitud != null) {
-                    oldPersonaIdOfSolicitudListSolicitud.getSolicitudList().remove(solicitudListSolicitud);
-                    oldPersonaIdOfSolicitudListSolicitud = em.merge(oldPersonaIdOfSolicitudListSolicitud);
+            for (Solicitud solicitudCollectionSolicitud : persona.getSolicitudCollection()) {
+                Persona oldPersonaIdOfSolicitudCollectionSolicitud = solicitudCollectionSolicitud.getPersonaId();
+                solicitudCollectionSolicitud.setPersonaId(persona);
+                solicitudCollectionSolicitud = em.merge(solicitudCollectionSolicitud);
+                if (oldPersonaIdOfSolicitudCollectionSolicitud != null) {
+                    oldPersonaIdOfSolicitudCollectionSolicitud.getSolicitudCollection().remove(solicitudCollectionSolicitud);
+                    oldPersonaIdOfSolicitudCollectionSolicitud = em.merge(oldPersonaIdOfSolicitudCollectionSolicitud);
                 }
             }
             em.getTransaction().commit();
@@ -72,36 +73,36 @@ public class PersonaJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Persona persistentPersona = em.find(Persona.class, persona.getId());
-            List<Solicitud> solicitudListOld = persistentPersona.getSolicitudList();
-            List<Solicitud> solicitudListNew = persona.getSolicitudList();
+            Collection<Solicitud> solicitudCollectionOld = persistentPersona.getSolicitudCollection();
+            Collection<Solicitud> solicitudCollectionNew = persona.getSolicitudCollection();
             List<String> illegalOrphanMessages = null;
-            for (Solicitud solicitudListOldSolicitud : solicitudListOld) {
-                if (!solicitudListNew.contains(solicitudListOldSolicitud)) {
+            for (Solicitud solicitudCollectionOldSolicitud : solicitudCollectionOld) {
+                if (!solicitudCollectionNew.contains(solicitudCollectionOldSolicitud)) {
                     if (illegalOrphanMessages == null) {
                         illegalOrphanMessages = new ArrayList<String>();
                     }
-                    illegalOrphanMessages.add("You must retain Solicitud " + solicitudListOldSolicitud + " since its personaId field is not nullable.");
+                    illegalOrphanMessages.add("You must retain Solicitud " + solicitudCollectionOldSolicitud + " since its personaId field is not nullable.");
                 }
             }
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);
             }
-            List<Solicitud> attachedSolicitudListNew = new ArrayList<Solicitud>();
-            for (Solicitud solicitudListNewSolicitudToAttach : solicitudListNew) {
-                solicitudListNewSolicitudToAttach = em.getReference(solicitudListNewSolicitudToAttach.getClass(), solicitudListNewSolicitudToAttach.getIdPeticion());
-                attachedSolicitudListNew.add(solicitudListNewSolicitudToAttach);
+            Collection<Solicitud> attachedSolicitudCollectionNew = new ArrayList<Solicitud>();
+            for (Solicitud solicitudCollectionNewSolicitudToAttach : solicitudCollectionNew) {
+                solicitudCollectionNewSolicitudToAttach = em.getReference(solicitudCollectionNewSolicitudToAttach.getClass(), solicitudCollectionNewSolicitudToAttach.getIdPeticion());
+                attachedSolicitudCollectionNew.add(solicitudCollectionNewSolicitudToAttach);
             }
-            solicitudListNew = attachedSolicitudListNew;
-            persona.setSolicitudList(solicitudListNew);
+            solicitudCollectionNew = attachedSolicitudCollectionNew;
+            persona.setSolicitudCollection(solicitudCollectionNew);
             persona = em.merge(persona);
-            for (Solicitud solicitudListNewSolicitud : solicitudListNew) {
-                if (!solicitudListOld.contains(solicitudListNewSolicitud)) {
-                    Persona oldPersonaIdOfSolicitudListNewSolicitud = solicitudListNewSolicitud.getPersonaId();
-                    solicitudListNewSolicitud.setPersonaId(persona);
-                    solicitudListNewSolicitud = em.merge(solicitudListNewSolicitud);
-                    if (oldPersonaIdOfSolicitudListNewSolicitud != null && !oldPersonaIdOfSolicitudListNewSolicitud.equals(persona)) {
-                        oldPersonaIdOfSolicitudListNewSolicitud.getSolicitudList().remove(solicitudListNewSolicitud);
-                        oldPersonaIdOfSolicitudListNewSolicitud = em.merge(oldPersonaIdOfSolicitudListNewSolicitud);
+            for (Solicitud solicitudCollectionNewSolicitud : solicitudCollectionNew) {
+                if (!solicitudCollectionOld.contains(solicitudCollectionNewSolicitud)) {
+                    Persona oldPersonaIdOfSolicitudCollectionNewSolicitud = solicitudCollectionNewSolicitud.getPersonaId();
+                    solicitudCollectionNewSolicitud.setPersonaId(persona);
+                    solicitudCollectionNewSolicitud = em.merge(solicitudCollectionNewSolicitud);
+                    if (oldPersonaIdOfSolicitudCollectionNewSolicitud != null && !oldPersonaIdOfSolicitudCollectionNewSolicitud.equals(persona)) {
+                        oldPersonaIdOfSolicitudCollectionNewSolicitud.getSolicitudCollection().remove(solicitudCollectionNewSolicitud);
+                        oldPersonaIdOfSolicitudCollectionNewSolicitud = em.merge(oldPersonaIdOfSolicitudCollectionNewSolicitud);
                     }
                 }
             }
@@ -135,12 +136,12 @@ public class PersonaJpaController implements Serializable {
                 throw new NonexistentEntityException("The persona with id " + id + " no longer exists.", enfe);
             }
             List<String> illegalOrphanMessages = null;
-            List<Solicitud> solicitudListOrphanCheck = persona.getSolicitudList();
-            for (Solicitud solicitudListOrphanCheckSolicitud : solicitudListOrphanCheck) {
+            Collection<Solicitud> solicitudCollectionOrphanCheck = persona.getSolicitudCollection();
+            for (Solicitud solicitudCollectionOrphanCheckSolicitud : solicitudCollectionOrphanCheck) {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();
                 }
-                illegalOrphanMessages.add("This Persona (" + persona + ") cannot be destroyed since the Solicitud " + solicitudListOrphanCheckSolicitud + " in its solicitudList field has a non-nullable personaId field.");
+                illegalOrphanMessages.add("This Persona (" + persona + ") cannot be destroyed since the Solicitud " + solicitudCollectionOrphanCheckSolicitud + " in its solicitudCollection field has a non-nullable personaId field.");
             }
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);

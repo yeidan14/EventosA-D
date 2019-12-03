@@ -60,8 +60,7 @@
         <div class="main-content">
           <div class="content-wrapper"><!--Statistics cards Starts-->
 <div class="row">
-  
-  
+    <img src="app-assets/img/fondo-user.png"  width="100%">
 
   
   

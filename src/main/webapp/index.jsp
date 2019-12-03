@@ -102,7 +102,7 @@
                   <div class="fg-actions d-flex justify-content-between">
                     <div class="login-btn">
                         
-                            <a href="registro.jsp" class="btn btn-outline-primary text-decoration-none">Crear Cuenta</a>
+                          
                    
                     </div>
                     <div class="recover-pass">
@@ -112,13 +112,16 @@
                     </div>
                   </div>
                   </form>
+             
+             
+             
                   <hr class="m-0">
                   <div class="d-flex justify-content-between mt-3">
-                    <div class="option-login">
-                        <img src="app-assets/img/logosistemas.png" height="73%">
-                    </div>
+                    
                     <div class="social-login-options">
-                      
+                      <a href="admin.jsp"><button  type="button" class="btn btn-raised btn-outline-primary"><i class="fa fa-user-o"></i>
+                      Administrador</button></a>  
+                        <a href="registro.jsp" class="btn btn-outline-primary text-decoration-none">Crear Cuenta</a>
                      
                     </div>
                   </div>

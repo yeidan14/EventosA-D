@@ -15,6 +15,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import Dto.Solicitud;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -35,27 +36,27 @@ public class SitioJpaController implements Serializable {
     }
 
     public void create(Sitio sitio) {
-        if (sitio.getSolicitudList() == null) {
-            sitio.setSolicitudList(new ArrayList<Solicitud>());
+        if (sitio.getSolicitudCollection() == null) {
+            sitio.setSolicitudCollection(new ArrayList<Solicitud>());
         }
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            List<Solicitud> attachedSolicitudList = new ArrayList<Solicitud>();
-            for (Solicitud solicitudListSolicitudToAttach : sitio.getSolicitudList()) {
-                solicitudListSolicitudToAttach = em.getReference(solicitudListSolicitudToAttach.getClass(), solicitudListSolicitudToAttach.getIdPeticion());
-                attachedSolicitudList.add(solicitudListSolicitudToAttach);
+            Collection<Solicitud> attachedSolicitudCollection = new ArrayList<Solicitud>();
+            for (Solicitud solicitudCollectionSolicitudToAttach : sitio.getSolicitudCollection()) {
+                solicitudCollectionSolicitudToAttach = em.getReference(solicitudCollectionSolicitudToAttach.getClass(), solicitudCollectionSolicitudToAttach.getIdPeticion());
+                attachedSolicitudCollection.add(solicitudCollectionSolicitudToAttach);
             }
-            sitio.setSolicitudList(attachedSolicitudList);
+            sitio.setSolicitudCollection(attachedSolicitudCollection);
             em.persist(sitio);
-            for (Solicitud solicitudListSolicitud : sitio.getSolicitudList()) {
-                Sitio oldSitioIdSitioOfSolicitudListSolicitud = solicitudListSolicitud.getSitioIdSitio();
-                solicitudListSolicitud.setSitioIdSitio(sitio);
-                solicitudListSolicitud = em.merge(solicitudListSolicitud);
-                if (oldSitioIdSitioOfSolicitudListSolicitud != null) {
-                    oldSitioIdSitioOfSolicitudListSolicitud.getSolicitudList().remove(solicitudListSolicitud);
-                    oldSitioIdSitioOfSolicitudListSolicitud = em.merge(oldSitioIdSitioOfSolicitudListSolicitud);
+            for (Solicitud solicitudCollectionSolicitud : sitio.getSolicitudCollection()) {
+                Sitio oldSitioIdSitioOfSolicitudCollectionSolicitud = solicitudCollectionSolicitud.getSitioIdSitio();
+                solicitudCollectionSolicitud.setSitioIdSitio(sitio);
+                solicitudCollectionSolicitud = em.merge(solicitudCollectionSolicitud);
+                if (oldSitioIdSitioOfSolicitudCollectionSolicitud != null) {
+                    oldSitioIdSitioOfSolicitudCollectionSolicitud.getSolicitudCollection().remove(solicitudCollectionSolicitud);
+                    oldSitioIdSitioOfSolicitudCollectionSolicitud = em.merge(oldSitioIdSitioOfSolicitudCollectionSolicitud);
                 }
             }
             em.getTransaction().commit();
@@ -72,36 +73,36 @@ public class SitioJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Sitio persistentSitio = em.find(Sitio.class, sitio.getIdSitio());
-            List<Solicitud> solicitudListOld = persistentSitio.getSolicitudList();
-            List<Solicitud> solicitudListNew = sitio.getSolicitudList();
+            Collection<Solicitud> solicitudCollectionOld = persistentSitio.getSolicitudCollection();
+            Collection<Solicitud> solicitudCollectionNew = sitio.getSolicitudCollection();
             List<String> illegalOrphanMessages = null;
-            for (Solicitud solicitudListOldSolicitud : solicitudListOld) {
-                if (!solicitudListNew.contains(solicitudListOldSolicitud)) {
+            for (Solicitud solicitudCollectionOldSolicitud : solicitudCollectionOld) {
+                if (!solicitudCollectionNew.contains(solicitudCollectionOldSolicitud)) {
                     if (illegalOrphanMessages == null) {
                         illegalOrphanMessages = new ArrayList<String>();
                     }
-                    illegalOrphanMessages.add("You must retain Solicitud " + solicitudListOldSolicitud + " since its sitioIdSitio field is not nullable.");
+                    illegalOrphanMessages.add("You must retain Solicitud " + solicitudCollectionOldSolicitud + " since its sitioIdSitio field is not nullable.");
                 }
             }
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);
             }
-            List<Solicitud> attachedSolicitudListNew = new ArrayList<Solicitud>();
-            for (Solicitud solicitudListNewSolicitudToAttach : solicitudListNew) {
-                solicitudListNewSolicitudToAttach = em.getReference(solicitudListNewSolicitudToAttach.getClass(), solicitudListNewSolicitudToAttach.getIdPeticion());
-                attachedSolicitudListNew.add(solicitudListNewSolicitudToAttach);
+            Collection<Solicitud> attachedSolicitudCollectionNew = new ArrayList<Solicitud>();
+            for (Solicitud solicitudCollectionNewSolicitudToAttach : solicitudCollectionNew) {
+                solicitudCollectionNewSolicitudToAttach = em.getReference(solicitudCollectionNewSolicitudToAttach.getClass(), solicitudCollectionNewSolicitudToAttach.getIdPeticion());
+                attachedSolicitudCollectionNew.add(solicitudCollectionNewSolicitudToAttach);
             }
-            solicitudListNew = attachedSolicitudListNew;
-            sitio.setSolicitudList(solicitudListNew);
+            solicitudCollectionNew = attachedSolicitudCollectionNew;
+            sitio.setSolicitudCollection(solicitudCollectionNew);
             sitio = em.merge(sitio);
-            for (Solicitud solicitudListNewSolicitud : solicitudListNew) {
-                if (!solicitudListOld.contains(solicitudListNewSolicitud)) {
-                    Sitio oldSitioIdSitioOfSolicitudListNewSolicitud = solicitudListNewSolicitud.getSitioIdSitio();
-                    solicitudListNewSolicitud.setSitioIdSitio(sitio);
-                    solicitudListNewSolicitud = em.merge(solicitudListNewSolicitud);
-                    if (oldSitioIdSitioOfSolicitudListNewSolicitud != null && !oldSitioIdSitioOfSolicitudListNewSolicitud.equals(sitio)) {
-                        oldSitioIdSitioOfSolicitudListNewSolicitud.getSolicitudList().remove(solicitudListNewSolicitud);
-                        oldSitioIdSitioOfSolicitudListNewSolicitud = em.merge(oldSitioIdSitioOfSolicitudListNewSolicitud);
+            for (Solicitud solicitudCollectionNewSolicitud : solicitudCollectionNew) {
+                if (!solicitudCollectionOld.contains(solicitudCollectionNewSolicitud)) {
+                    Sitio oldSitioIdSitioOfSolicitudCollectionNewSolicitud = solicitudCollectionNewSolicitud.getSitioIdSitio();
+                    solicitudCollectionNewSolicitud.setSitioIdSitio(sitio);
+                    solicitudCollectionNewSolicitud = em.merge(solicitudCollectionNewSolicitud);
+                    if (oldSitioIdSitioOfSolicitudCollectionNewSolicitud != null && !oldSitioIdSitioOfSolicitudCollectionNewSolicitud.equals(sitio)) {
+                        oldSitioIdSitioOfSolicitudCollectionNewSolicitud.getSolicitudCollection().remove(solicitudCollectionNewSolicitud);
+                        oldSitioIdSitioOfSolicitudCollectionNewSolicitud = em.merge(oldSitioIdSitioOfSolicitudCollectionNewSolicitud);
                     }
                 }
             }
@@ -135,12 +136,12 @@ public class SitioJpaController implements Serializable {
                 throw new NonexistentEntityException("The sitio with id " + id + " no longer exists.", enfe);
             }
             List<String> illegalOrphanMessages = null;
-            List<Solicitud> solicitudListOrphanCheck = sitio.getSolicitudList();
-            for (Solicitud solicitudListOrphanCheckSolicitud : solicitudListOrphanCheck) {
+            Collection<Solicitud> solicitudCollectionOrphanCheck = sitio.getSolicitudCollection();
+            for (Solicitud solicitudCollectionOrphanCheckSolicitud : solicitudCollectionOrphanCheck) {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();
                 }
-                illegalOrphanMessages.add("This Sitio (" + sitio + ") cannot be destroyed since the Solicitud " + solicitudListOrphanCheckSolicitud + " in its solicitudList field has a non-nullable sitioIdSitio field.");
+                illegalOrphanMessages.add("This Sitio (" + sitio + ") cannot be destroyed since the Solicitud " + solicitudCollectionOrphanCheckSolicitud + " in its solicitudCollection field has a non-nullable sitioIdSitio field.");
             }
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);

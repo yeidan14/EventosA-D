@@ -20,24 +20,26 @@
         <div class="sidebar-content">
           <div class="nav-container">
             <ul id="main-menu-navigation" data-menu="menu-navigation" data-scroll-to-active="true" class="navigation navigation-main">
-              <li class="has-sub nav-item"><a href="#"><i class="ft-home"></i><span data-i18n="" class="menu-title">Sitios</span><span class="tag badge badge-pill badge-danger float-right mr-1 mt-1">2</span></a>
-                <ul class="menu-content">
-                  <li class="active"><a href="agregar_sitio.jsp" class="menu-item">Agregar Sitios</a>
-                  </li>
-                  <li><a href="#" class="menu-item">Modificar Sitios</a>
-                  </li>
-                </ul>
-              </li>        
+               <li class=" nav-item"><a href="agregar_sitio.jsp" ><i class="ft-plus"></i><span data-i18n="" class="menu-title">Agregar Sitios</span></a>
+              </li>
+                <li class=" nav-item"><a href="modificar_sitio.jsp" ><i class="ft-refresh-cw"></i><span data-i18n="" class="menu-title">Modificar Sitios</span></a>
+              </li>
+                 
+
+               <li class=" nav-item"><a href="agregar_logistico.jsp" ><i class="ft-check-square"></i><span data-i18n="" class="menu-title">Agregar Logistico</span></a>
+              </li>
+             
+                  <li class=" nav-item"><a href="modificar_logistico.jsp" ><i class="ft-repeat"></i><span data-i18n="" class="menu-title">Modificar Logistico</span></a>
+              </li>
+                 
+                  
+              <li class=" nav-item"><a href="solicitudes_admin.jsp" ><i class="ft-clipboard"></i><span data-i18n="" class="menu-title">Solicitudes</span></a>
+              </li>
               
               
               
-              
-              <li class="has-sub nav-item"><a href="#"><i class="ft-grid"></i><span data-i18n="" class="menu-title">Solicitudes</span></a>
-                <ul class="menu-content">
-                  <li><a href="#" class="menu-item">Solicitudes</a>
-                  </li>
-                  <li><a href="#" class="menu-item">Borrar Solicitudes</a>
-                  </li>
+                  
+                  
                 </ul>
               </li>              
             </ul>

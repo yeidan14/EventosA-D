@@ -6,7 +6,9 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 :root {
-  --blue: #007bff;  
+  --blue: #007bff;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
   --pink: #e83e8c;
   --red: #dc3545;
   --orange: #fd7e14;
@@ -5379,6 +5381,12 @@ button.bg-dark:focus {
   bottom: 0;
   left: 0;
   z-index: 1030; }
+
+@supports (position: sticky) {
+  .sticky-top {
+    position: sticky;
+    top: 0;
+    z-index: 1020; } }
 
 .sr-only {
   position: absolute;
@@ -40531,7 +40539,7 @@ input[type="radio"].switch {
     min-height: 450px; } }
 
 #regestration {
-  background-image: url("../img/gallery/light-bg1.jpg");
+  background-image: url("../img/gallery/light-bg.jpg");
   background-size: 100% 100%;
   background-repeat: no-repeat; }
   #regestration .register-img {
@@ -40544,7 +40552,7 @@ input[type="radio"].switch {
   height: auto; }
 
 #forgot-password .forgot-password-bg {
-  background-image: url("../img/gallery/light-bg1.jpg");
+  background-image: url("../img/gallery/light-bg.jpg");
   background-size: 100% 100%;
   background-repeat: no-repeat; }
 
@@ -40556,7 +40564,7 @@ input[type="radio"].switch {
   color: #fff; }
 
 #lock-screen {
-  background-image: url("../img/gallery/light-bg2.jpg");
+  background-image: url("../img/gallery/light-bg.jpg");
   background-size: 100% 100%;
   background-repeat: no-repeat; }
   #lock-screen .lock-screen-img {

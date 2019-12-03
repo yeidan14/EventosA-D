@@ -15,6 +15,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import Dto.Solicitud;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -35,27 +36,27 @@ public class LogisticoJpaController implements Serializable {
     }
 
     public void create(Logistico logistico) {
-        if (logistico.getSolicitudList() == null) {
-            logistico.setSolicitudList(new ArrayList<Solicitud>());
+        if (logistico.getSolicitudCollection() == null) {
+            logistico.setSolicitudCollection(new ArrayList<Solicitud>());
         }
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            List<Solicitud> attachedSolicitudList = new ArrayList<Solicitud>();
-            for (Solicitud solicitudListSolicitudToAttach : logistico.getSolicitudList()) {
-                solicitudListSolicitudToAttach = em.getReference(solicitudListSolicitudToAttach.getClass(), solicitudListSolicitudToAttach.getIdPeticion());
-                attachedSolicitudList.add(solicitudListSolicitudToAttach);
+            Collection<Solicitud> attachedSolicitudCollection = new ArrayList<Solicitud>();
+            for (Solicitud solicitudCollectionSolicitudToAttach : logistico.getSolicitudCollection()) {
+                solicitudCollectionSolicitudToAttach = em.getReference(solicitudCollectionSolicitudToAttach.getClass(), solicitudCollectionSolicitudToAttach.getIdPeticion());
+                attachedSolicitudCollection.add(solicitudCollectionSolicitudToAttach);
             }
-            logistico.setSolicitudList(attachedSolicitudList);
+            logistico.setSolicitudCollection(attachedSolicitudCollection);
             em.persist(logistico);
-            for (Solicitud solicitudListSolicitud : logistico.getSolicitudList()) {
-                Logistico oldLogisticoIdLogOfSolicitudListSolicitud = solicitudListSolicitud.getLogisticoIdLog();
-                solicitudListSolicitud.setLogisticoIdLog(logistico);
-                solicitudListSolicitud = em.merge(solicitudListSolicitud);
-                if (oldLogisticoIdLogOfSolicitudListSolicitud != null) {
-                    oldLogisticoIdLogOfSolicitudListSolicitud.getSolicitudList().remove(solicitudListSolicitud);
-                    oldLogisticoIdLogOfSolicitudListSolicitud = em.merge(oldLogisticoIdLogOfSolicitudListSolicitud);
+            for (Solicitud solicitudCollectionSolicitud : logistico.getSolicitudCollection()) {
+                Logistico oldLogisticoIdLogOfSolicitudCollectionSolicitud = solicitudCollectionSolicitud.getLogisticoIdLog();
+                solicitudCollectionSolicitud.setLogisticoIdLog(logistico);
+                solicitudCollectionSolicitud = em.merge(solicitudCollectionSolicitud);
+                if (oldLogisticoIdLogOfSolicitudCollectionSolicitud != null) {
+                    oldLogisticoIdLogOfSolicitudCollectionSolicitud.getSolicitudCollection().remove(solicitudCollectionSolicitud);
+                    oldLogisticoIdLogOfSolicitudCollectionSolicitud = em.merge(oldLogisticoIdLogOfSolicitudCollectionSolicitud);
                 }
             }
             em.getTransaction().commit();
@@ -72,36 +73,36 @@ public class LogisticoJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Logistico persistentLogistico = em.find(Logistico.class, logistico.getIdLog());
-            List<Solicitud> solicitudListOld = persistentLogistico.getSolicitudList();
-            List<Solicitud> solicitudListNew = logistico.getSolicitudList();
+            Collection<Solicitud> solicitudCollectionOld = persistentLogistico.getSolicitudCollection();
+            Collection<Solicitud> solicitudCollectionNew = logistico.getSolicitudCollection();
             List<String> illegalOrphanMessages = null;
-            for (Solicitud solicitudListOldSolicitud : solicitudListOld) {
-                if (!solicitudListNew.contains(solicitudListOldSolicitud)) {
+            for (Solicitud solicitudCollectionOldSolicitud : solicitudCollectionOld) {
+                if (!solicitudCollectionNew.contains(solicitudCollectionOldSolicitud)) {
                     if (illegalOrphanMessages == null) {
                         illegalOrphanMessages = new ArrayList<String>();
                     }
-                    illegalOrphanMessages.add("You must retain Solicitud " + solicitudListOldSolicitud + " since its logisticoIdLog field is not nullable.");
+                    illegalOrphanMessages.add("You must retain Solicitud " + solicitudCollectionOldSolicitud + " since its logisticoIdLog field is not nullable.");
                 }
             }
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);
             }
-            List<Solicitud> attachedSolicitudListNew = new ArrayList<Solicitud>();
-            for (Solicitud solicitudListNewSolicitudToAttach : solicitudListNew) {
-                solicitudListNewSolicitudToAttach = em.getReference(solicitudListNewSolicitudToAttach.getClass(), solicitudListNewSolicitudToAttach.getIdPeticion());
-                attachedSolicitudListNew.add(solicitudListNewSolicitudToAttach);
+            Collection<Solicitud> attachedSolicitudCollectionNew = new ArrayList<Solicitud>();
+            for (Solicitud solicitudCollectionNewSolicitudToAttach : solicitudCollectionNew) {
+                solicitudCollectionNewSolicitudToAttach = em.getReference(solicitudCollectionNewSolicitudToAttach.getClass(), solicitudCollectionNewSolicitudToAttach.getIdPeticion());
+                attachedSolicitudCollectionNew.add(solicitudCollectionNewSolicitudToAttach);
             }
-            solicitudListNew = attachedSolicitudListNew;
-            logistico.setSolicitudList(solicitudListNew);
+            solicitudCollectionNew = attachedSolicitudCollectionNew;
+            logistico.setSolicitudCollection(solicitudCollectionNew);
             logistico = em.merge(logistico);
-            for (Solicitud solicitudListNewSolicitud : solicitudListNew) {
-                if (!solicitudListOld.contains(solicitudListNewSolicitud)) {
-                    Logistico oldLogisticoIdLogOfSolicitudListNewSolicitud = solicitudListNewSolicitud.getLogisticoIdLog();
-                    solicitudListNewSolicitud.setLogisticoIdLog(logistico);
-                    solicitudListNewSolicitud = em.merge(solicitudListNewSolicitud);
-                    if (oldLogisticoIdLogOfSolicitudListNewSolicitud != null && !oldLogisticoIdLogOfSolicitudListNewSolicitud.equals(logistico)) {
-                        oldLogisticoIdLogOfSolicitudListNewSolicitud.getSolicitudList().remove(solicitudListNewSolicitud);
-                        oldLogisticoIdLogOfSolicitudListNewSolicitud = em.merge(oldLogisticoIdLogOfSolicitudListNewSolicitud);
+            for (Solicitud solicitudCollectionNewSolicitud : solicitudCollectionNew) {
+                if (!solicitudCollectionOld.contains(solicitudCollectionNewSolicitud)) {
+                    Logistico oldLogisticoIdLogOfSolicitudCollectionNewSolicitud = solicitudCollectionNewSolicitud.getLogisticoIdLog();
+                    solicitudCollectionNewSolicitud.setLogisticoIdLog(logistico);
+                    solicitudCollectionNewSolicitud = em.merge(solicitudCollectionNewSolicitud);
+                    if (oldLogisticoIdLogOfSolicitudCollectionNewSolicitud != null && !oldLogisticoIdLogOfSolicitudCollectionNewSolicitud.equals(logistico)) {
+                        oldLogisticoIdLogOfSolicitudCollectionNewSolicitud.getSolicitudCollection().remove(solicitudCollectionNewSolicitud);
+                        oldLogisticoIdLogOfSolicitudCollectionNewSolicitud = em.merge(oldLogisticoIdLogOfSolicitudCollectionNewSolicitud);
                     }
                 }
             }
@@ -135,12 +136,12 @@ public class LogisticoJpaController implements Serializable {
                 throw new NonexistentEntityException("The logistico with id " + id + " no longer exists.", enfe);
             }
             List<String> illegalOrphanMessages = null;
-            List<Solicitud> solicitudListOrphanCheck = logistico.getSolicitudList();
-            for (Solicitud solicitudListOrphanCheckSolicitud : solicitudListOrphanCheck) {
+            Collection<Solicitud> solicitudCollectionOrphanCheck = logistico.getSolicitudCollection();
+            for (Solicitud solicitudCollectionOrphanCheckSolicitud : solicitudCollectionOrphanCheck) {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();
                 }
-                illegalOrphanMessages.add("This Logistico (" + logistico + ") cannot be destroyed since the Solicitud " + solicitudListOrphanCheckSolicitud + " in its solicitudList field has a non-nullable logisticoIdLog field.");
+                illegalOrphanMessages.add("This Logistico (" + logistico + ") cannot be destroyed since the Solicitud " + solicitudCollectionOrphanCheckSolicitud + " in its solicitudCollection field has a non-nullable logisticoIdLog field.");
             }
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);

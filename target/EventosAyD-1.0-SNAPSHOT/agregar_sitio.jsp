@@ -62,105 +62,92 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title" id="from-actions-multiple">Event Registration</h4>
+          <h4 class="card-title" id="from-actions-multiple">Agregar Sitio</h4>
           
 
           
         </div>
         <div class="card-body">
           <div class="px-3">
-
-            <form class="form">
-              <div class="form-actions top clearfix">
-                <div class="buttons-group float-left">
-                  <button type="button" class="btn btn-raised btn-warning mr-1">
-                    <i class="ft-x"></i> Cancel
+              
+              <%String registrado=(String)request.getAttribute("nombre");
+             if(registrado=="registrado"){%>
+           <div class="alert alert-icon-left alert-success alert-dismissible mb-2" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
                   </button>
-                  <button type="button" class="btn btn-raised btn-primary mr-1">
-                    <i class="fa fa-check-square-o"></i> Save
+                  <strong>Perfecto!</strong>Se ha registrado Correctamente. El Sitio
+                  
+                </div>
+             <%}        
+             if(registrado=="yaexiste"){%>
+            <div class="alert alert-icon-left alert-danger alert-dismissible mb-2" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
                   </button>
+                <strong>Error!</strong> El  Nombre del sitio ya esta creado! <br>
+                
                 </div>
+             <%}%>
+           
 
-                <div class="buttons-group float-right">
-                  <button type="button" class="btn btn-raised btn-info mr-1">Action 1</button>
-                  <button type="button" class="btn btn-raised btn-danger mr-1">Action 2</button>
-                  <button type="button" class="btn btn-raised btn-success">Action 3</button>
-                </div>
-              </div>
+              <form class="form" action="Registrar_Sitio.do"  method="Request">
+              
 
               <div class="row justify-content-md-center">
                 <div class="col-md-6">
                   <div class="form-body">
                     <div class="row">
                       <div class="form-group col-12 mb-2">
-                        <label for="eventRegInput1">Full Name</label>
-                        <input type="text" id="eventRegInput1" class="form-control" placeholder="name" name="fullname">
+                        <label for="eventRegInput1">Nombre del Sitio</label>
+                        <input type="text" id="eventRegInput1" class="form-control" placeholder="Nombre del Sitio" name="nsitio" required="">
                       </div>
                     </div>
 
                     <div class="row">
                       <div class="form-group col-12 mb-2">
-                        <label for="eventRegInput2">Title</label>
-                        <input type="text" id="eventRegInput2" class="form-control" placeholder="title" name="title">
+                        <label for="eventRegInput2">Capacidad del Sitio:</label>
+                         <input type="number" name="csitio" class="form-control mb-3" placeholder="Capacidad" required=""/>
+                      </div>
+                    </div>
+
+                    
+
+                    <div class="row">
+                      <div class="form-group col-12 mb-2">
+                        <label for="eventRegInput4"> Fecha de Inicio</label>
+                        <input type="date" id="eventRegInput4" class="form-control" placeholder="fecha de inicio" name="fechasitio" required="">
                       </div>
                     </div>
 
                     <div class="row">
                       <div class="form-group col-12 mb-2">
-                        <label for="eventRegInput3">Company</label>
-                        <input type="text" id="eventRegInput3" class="form-control" placeholder="company" name="company">
+                        <label for="eventRegInput5">Ubicacion</label>
+                        <input type="text" id="eventRegInput5" class="form-control" name="ubicacion" placeholder="Ubicacion del Sitio " required="">
                       </div>
                     </div>
 
-                    <div class="row">
-                      <div class="form-group col-12 mb-2">
-                        <label for="eventRegInput4">Email</label>
-                        <input type="email" id="eventRegInput4" class="form-control" placeholder="email" name="email">
-                      </div>
+                    <div class="form-group">
+                      <label for="projectinput5">Estado del Sitio :</label>
+                      <select id="projectinput5" name="estado" class="form-control"required="">                        
+                        <option value="Ocupado">Ocupado</option>
+                        <option value="Libre">Libre</option>
+                       
+                      </select>
                     </div>
-
-                    <div class="row">
+                      
+                      <div class="row">
                       <div class="form-group col-12 mb-2">
-                        <label for="eventRegInput5">Contact Number</label>
-                        <input type="number" id="eventRegInput5" class="form-control" name="contact" placeholder="contact number">
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="form-group col-12 mb-2">
-                        <label>Existing Customer</label>
-                        <div class="input-group">
-                          <div class="custom-control custom-radio d-inline-block ml-1">
-                            <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
-                            <label class="custom-control-label" for="customRadioInline1">Yes</label>
-                          </div>
-                          <div class="custom-control custom-radio d-inline-block ml-2">
-                            <input type="radio" id="customRadioInline2" checked name="customRadioInline1" class="custom-control-input">
-                            <label class="custom-control-label" for="customRadioInline2">No</label>
-                          </div>
-                        </div>
+                          <button type="submit" class="btn mb-1 btn-success btn-icon btn-lg btn-block"><i class="fa fa-check-circle"></i>
+                    Agregar Sitio</button>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-
-              <div class="form-actions clearfix">
-                <div class="buttons-group float-left">
-                  <button type="button" class="btn btn-raised btn-warning mr-1">
-                    <i class="ft-x"></i> Cancel
-                  </button>
-                  <button type="button" class="btn btn-raised btn-primary mr-1">
-                    <i class="fa fa-check-square-o"></i> Save
-                  </button>
-                </div>
-
-                <div class="buttons-group float-right">
-                  <button type="button" class="btn btn-raised btn-info mr-1">Action 1</button>
-                  <button type="button" class="btn btn-raised btn-danger mr-1">Action 2</button>
-                  <button type="button" class="btn btn-raised btn-success">Action 3</button>
-                </div>
-              </div>
+                
+                
+                
             </form>
 
           </div>

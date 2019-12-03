@@ -110,6 +110,8 @@
                     </div>
                   </div>
                     </form>
+              <a href="index.jsp"><button  type="button" class="btn btn-raised btn-outline-primary"><i class="fa fa-user-o"></i>
+                      Inicio</button></a>  
                 </div>
               </div>
             </div>

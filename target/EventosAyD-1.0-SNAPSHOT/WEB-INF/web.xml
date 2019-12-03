@@ -20,6 +20,58 @@
         <servlet-name>Logout_Admin</servlet-name>
         <servlet-class>Controller.Logout_Admin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Registrar_Sitio</servlet-name>
+        <servlet-class>Controller.Sitios.Registrar_Sitio</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Modificar_Sitio</servlet-name>
+        <servlet-class>Controller.Sitios.Modificar_Sitio</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Eliminar_Sitio</servlet-name>
+        <servlet-class>Controller.Sitios.Eliminar_Sitio</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Actualizar_Sitio</servlet-name>
+        <servlet-class>Controller.Sitios.Actualizar_Sitio</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>sitio_solicitud</servlet-name>
+        <servlet-class>Controller.Sitios.sitio_solicitud</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Registrar_Logistico</servlet-name>
+        <servlet-class>Controller.logistico.Registrar_Logistico</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Modificar_Logistico</servlet-name>
+        <servlet-class>Controller.logistico.Modificar_Logistico</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Eliminar_Logistico</servlet-name>
+        <servlet-class>Controller.logistico.Eliminar_Logistico</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Actualizar_Logistico</servlet-name>
+        <servlet-class>Controller.logistico.Actualizar_Logistico</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SolicitudLS</servlet-name>
+        <servlet-class>Controller.SolicitudLS</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Registrar_Solicitud</servlet-name>
+        <servlet-class>Controller.Solicitud.Registrar_Solicitud</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Eliminar_Solicitud</servlet-name>
+        <servlet-class>Controller.Solicitud.Eliminar_Solicitud</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Aceptar_Solicitud</servlet-name>
+        <servlet-class>Controller.Solicitud.Aceptar_Solicitud</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Registrar_Usuario</servlet-name>
         <url-pattern>/Registrar_Usuario.do</url-pattern>
@@ -39,6 +91,58 @@
     <servlet-mapping>
         <servlet-name>Logout_Admin</servlet-name>
         <url-pattern>/Logout_Admin.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Registrar_Sitio</servlet-name>
+        <url-pattern>/Registrar_Sitio.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Modificar_Sitio</servlet-name>
+        <url-pattern>/Modificar_Sitio.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Eliminar_Sitio</servlet-name>
+        <url-pattern>/Eliminar_Sitio.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Actualizar_Sitio</servlet-name>
+        <url-pattern>/Actualizar_Sitio.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>sitio_solicitud</servlet-name>
+        <url-pattern>/sitio_solicitud.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Registrar_Logistico</servlet-name>
+        <url-pattern>/Registrar_Logistico.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Modificar_Logistico</servlet-name>
+        <url-pattern>/Modificar_Logistico.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Eliminar_Logistico</servlet-name>
+        <url-pattern>/Eliminar_Logistico.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Actualizar_Logistico</servlet-name>
+        <url-pattern>/Actualizar_Logistico.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SolicitudLS</servlet-name>
+        <url-pattern>/SolicitudLS.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Registrar_Solicitud</servlet-name>
+        <url-pattern>/Registrar_Solicitud.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Eliminar_Solicitud</servlet-name>
+        <url-pattern>/Eliminar_Solicitud.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Aceptar_Solicitud</servlet-name>
+        <url-pattern>/Aceptar_Solicitud.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

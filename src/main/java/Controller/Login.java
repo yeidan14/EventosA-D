@@ -47,6 +47,7 @@ public class Login extends HttpServlet {
                 if (pass.equals(p.getPass())) {
                     HttpSession misession = request.getSession(true);
                     misession.setAttribute("usuario", p.getNombre());
+                    misession.setAttribute("email", p.getCorreo());
 
                     response.sendRedirect("index_eventos.jsp");
                 } else {

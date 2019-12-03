@@ -8,10 +8,10 @@
     <class>Dto.Sitio</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/eventos"/>
-      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://savucv.cly49ofno0yf.us-east-1.rds.amazonaws.com:3306/eventos"/>
+      <property name="javax.persistence.jdbc.user" value="yeidan"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-      <property name="javax.persistence.jdbc.password" value=""/>
+      <property name="javax.persistence.jdbc.password" value="yeidan141995"/>
     </properties>
   </persistence-unit>
 </persistence>
